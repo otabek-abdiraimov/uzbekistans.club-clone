@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	list-style: none;
+}
+
+body{
+    background-color: #212121;
+}
+
+:focus-visible { outline-offset: 4px; }
+
+::-webkit-scrollbar { width: 5px; }
+::selection {
+	background: #e3b269;
+	color: #000;
+}
+
+::-webkit-scrollbar-track { background-color: #000; }
+
+::-webkit-scrollbar-thumb { background-color: #e3b269; }
+
+
+.container{
+    max-width: 1170px;
+}
