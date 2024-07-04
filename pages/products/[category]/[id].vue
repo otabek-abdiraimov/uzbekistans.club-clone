@@ -41,8 +41,8 @@
 					<NuxtLink
 						:to="`/products/${img.category}/${img.id}`"
 						class="flex items-center gap-7 xl:gap-0 justify-normal xl:justify-between w-full xl:w-[19rem] cursor-pointer group"
-						v-for="(img, index) in images"
-						:key="index"
+						v-for="img in images"
+						:key="img.id"
 					>
 						<img
 							v-if="img.src.slice(0, 4) === 'http'"
