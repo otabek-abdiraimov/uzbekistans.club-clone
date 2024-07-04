@@ -185,6 +185,4 @@ const image = images.find(
 )
 </script>
 
-<style scoped>
-/* Add your styles here */
-</style>
+<style scoped></style>
