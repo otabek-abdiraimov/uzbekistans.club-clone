@@ -27,6 +27,9 @@ export default {
 					DEFAULT: '3rem',
 				},
 			},
+			screens: {
+				'2md': '800px',
+			},
 		},
 	},
 	plugins: [],

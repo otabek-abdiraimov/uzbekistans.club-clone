@@ -1,6 +1,6 @@
 <template>
 	<header class="header bg-[#1B1B1B] z-[1000]" id="header">
-		<nav class="nav mx-auto !container">
+		<nav class="nav mx-auto container">
 			<NuxtLink to="/" class="nav__logo">
 				<svg
 					data-v-00b951b5=""
@@ -264,7 +264,7 @@ a {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin: auto;
+	margin: auto 0;
 }
 
 .nav__logo {

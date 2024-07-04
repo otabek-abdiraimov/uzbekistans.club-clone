@@ -1,9 +1,9 @@
 <template>
-	<div v-if="image" class="text-white container mx-auto">
-		<div class="text-lg mt-40 mb-10 flex gap-3">
-			<NuxtLink to="/"> Main </NuxtLink>
+	<div v-if="image" class="mt-40 text-white container mx-auto">
+		<div class="text-lg mb-10 hidden lg:flex gap-3">
+			<NuxtLink to="/">Main</NuxtLink>
 			<p>></p>
-			<NuxtLink to="/projects"> Projects </NuxtLink>
+			<NuxtLink to="/projects">Projects</NuxtLink>
 			<p>></p>
 			<NuxtLink
 				:to="`/products/${image.category}/${image.id}`"
@@ -12,29 +12,56 @@
 				{{ image.title }}
 			</NuxtLink>
 		</div>
-		<div v-if="image" class="flex justify-between w-full">
-			<iframe
-				width="2300"
-				height="500"
-				src="https://www.youtube.com/embed/J8JtxytvMeU?si=EOMY64w-IH5An_X2"
-				title="YouTube video player"
-				frameborder="0"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-				referrerpolicy="strict-origin-when-cross-origin"
-				allowfullscreen
-			></iframe>
-			<div class="flex flex-col justify-evenly ml-10 w-full mt-10">
-				<p class="text-3xl mb-4 font-bold">{{ image.title }}</p>
-				<div class="flex items-center justify-between">
+		<div class="flex flex-col lg:flex-row justify-between">
+			<div>
+				<iframe
+					class="w-full mx-auto h-60 lg:w-[90%] lg:h-[500px] sm:w-full md:h-72 xl:w-[800px] rounded-xl"
+					src="https://www.youtube.com/embed/J8JtxytvMeU?si=EOMY64w-IH5An_X2"
+					title="YouTube video player"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					referrerpolicy="strict-origin-when-cross-origin"
+					allowfullscreen
+				></iframe>
+				<p class="text-lg lg:text-3xl my-4 font-bold">{{ image.title }}</p>
+				<div
+					class="w-80 md:w-full lg:w-[800px] flex items-center justify-between mb-4"
+				>
 					<span class="text-primary text-xl">{{
 						image.category.toUpperCase()
 					}}</span>
 					<h3 class="text-xl font-bold">{{ image.views }} views</h3>
 				</div>
 			</div>
-		</div>
-		<div v-else>
-			<p>Image not found</p>
+			<div>
+				<h2 class="mb-2 uppercase text-lg">Related</h2>
+				<div
+					class="overflow-y-scroll overflow-x-hidden related h-[500px] flex flex-col gap-5"
+				>
+					<NuxtLink
+						:to="`/products/${img.category}/${img.id}`"
+						class="flex items-center gap-7 xl:gap-0 justify-normal xl:justify-between w-full xl:w-[19rem] cursor-pointer group"
+						v-for="(img, index) in images"
+						:key="index"
+					>
+						<img
+							v-if="img.src.slice(0, 4) === 'http'"
+							class="rounded-xl w-32 cursor-pointer"
+							:src="img.src"
+							alt=""
+						/>
+						<div>
+							<h3
+								class="truncate font-bold w-full xl:w-40 group-hover:text-primary duration-150"
+							>
+								{{ img.title }}
+							</h3>
+							<h1 class="uppercase">{{ img.category }}</h1>
+							<p class="text-xs">{{ img.views }} views</p>
+						</div>
+					</NuxtLink>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -49,28 +76,28 @@ const images = [
 	{
 		id: 1,
 		src: 'https://uzbekistans.club/media/thumbnails/photo_2023-10-18_00-00-27.jpg',
-		category: 'ozbekistonlik',
+		category: "o'zbekistonlik",
 		title: 'Uzbekistan’s Club AQSH mavsumini boshladi!',
 		views: '10k',
 	},
 	{
 		id: 2,
 		src: 'https://i.ytimg.com/vi/p5p0oj7anpc/maxresdefault.jpg',
-		category: 'ozbekistonlik',
+		category: "o'zbekistonlik",
 		title: 'Uzbekistan’s Club AQSH mavsumini boshladi!',
 		views: '10k',
 	},
 	{
 		id: 3,
 		src: 'https://i.ytimg.com/vi/ZyeQWD-qS1U/sddefault.jpg?v=6447b9b0',
-		category: 'ozbekistonlik',
+		category: "o'zbekistonlik",
 		title: 'Uzbekistan’s Club AQSH mavsumini boshladi!',
 		views: '10k',
 	},
 	{
 		id: 4,
 		src: 'https://uzbekistans.club/media/thumbnails/episode_posterssss.jpg',
-		category: 'ozbekistonlik',
+		category: "o'zbekistonlik",
 		title: 'Uzbekistan’s Club AQSH mavsumini boshladi!',
 		views: '10k',
 	},
