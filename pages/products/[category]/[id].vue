@@ -27,9 +27,13 @@
 				<div
 					class="w-80 md:w-full lg:w-[800px] flex items-center justify-between mb-4"
 				>
-					<span class="text-primary text-xl">{{
-						image.category.toUpperCase()
-					}}</span>
+					<span class="text-primary text-xl uppercase">
+						{{
+							image.category === "'ozbekistonlik"
+								? "o'zbekistonlik"
+								: image.category
+						}}</span
+					>
 					<h3 class="text-xl font-bold">{{ image.views }} views</h3>
 				</div>
 			</div>
@@ -56,7 +60,13 @@
 							>
 								{{ img.title }}
 							</h3>
-							<h1 class="uppercase">{{ img.category }}</h1>
+							<h1 class="uppercase">
+								{{
+									img.category === "'ozbekistonlik"
+										? "o'zbekistonlik"
+										: img.category
+								}}
+							</h1>
 							<p class="text-xs">{{ img.views }} views</p>
 						</div>
 					</NuxtLink>

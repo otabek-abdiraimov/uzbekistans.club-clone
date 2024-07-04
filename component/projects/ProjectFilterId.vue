@@ -57,12 +57,9 @@
 									></button>
 									<span>Podcast</span>
 								</div>
-
-								<!-- <div class="border_b"></div> -->
 							</div>
 						</div>
 
-						<!-- Gallery Section Start -->
 						<div class="gallery sets">
 							<NuxtLink
 								class="flex flex-col gap-3 items-center justify-center border_b"
@@ -84,15 +81,6 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- <div v-if="isModalOpen" class="openDiv">
-      <img :src="images[currentImage].src" class="imgPreview" />
-      <div class="butonsSection">
-        <button class="prevButton" @click="prevImage">Previous</button>
-        <button class="nextButton" @click="nextImage">Next</button>
-      </div>
-      <button class="closeBtn" @click="closeModal">Close</button>
-    </div> -->
 	</div>
 </template>
 
@@ -179,9 +167,20 @@ const images = ref([
 	},
 ])
 
+const processedImages = computed(() => {
+	return images.value.map(img => {
+		if (img.category === 'ozbekistonlik') {
+			return { ...img, category: "o'zbekistonlik" }
+		}
+		return img
+	})
+})
+
 const filteredImages = computed(() => {
-	if (activeFilter.value === 'all') return images.value
-	return images.value.filter(img => img.category === activeFilter.value)
+	if (activeFilter.value === 'all') return processedImages.value
+	return processedImages.value.filter(
+		img => img.category === activeFilter.value
+	)
 })
 
 const filterGallery = filter => {
@@ -385,7 +384,7 @@ a {
 	margin: 10px;
 }
 .prevButton:hover,
-.nextButton:hover {
+nextButton:hover {
 	background: #fff;
 	color: black;
 }
@@ -479,7 +478,7 @@ a {
 		border-radius: 15px;
 	}
 	.prevButton,
-	.nextButton {
+	nextButton {
 		font-size: 18px;
 		padding: 6px 20px;
 		border-radius: 10px;
